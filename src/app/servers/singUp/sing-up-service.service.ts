@@ -11,21 +11,19 @@ import { User } from 'src/app/interfaces/User';
 })
 export class SingUpServiceService {
 	private userReg: User = {};
-	constructor(private afAuth: AuthService, private afStore: DataService, private routesv: Router) {
-
-	}
+	constructor(private afAuth: AuthService, private afStore: DataService, private routesv: Router) { }
 
 	async register() {
 		this.afAuth.setUser(this.userReg);
 		return await this.afAuth.register().then(() => {
-			this.routesv.navigateByUrl('/tipo-usuario');//Siguiente registro
+			this.routesv.navigateByUrl('/tipo-usuario');
 		}).catch((err) => {
 			console.log(err);//Alerta
 		});
 	}
 	async addStudent(student: Student) {
 		this.afAuth.setUser(this.userReg);
-		return await this.afStore.addUserProfile(this.afAuth.getAuth().currentUser.uid, student).then(() => {
+		return await this.afStore.addUserProfile(this.afAuth.getCurrentUserUid(), student).then(() => {
 			this.routesv.navigateByUrl('/logged-in');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
@@ -33,7 +31,7 @@ export class SingUpServiceService {
 	}
 	async addTeacher(teacher: Teacher) {
 		this.afAuth.setUser(this.userReg);
-		return await this.afStore.addUserProfile(this.afAuth.getAuth().currentUser.uid, teacher).then(() => {
+		return await this.afStore.addUserProfile(this.afAuth.getCurrentUserUid(), teacher).then(() => {
 			this.routesv.navigateByUrl('/logged-in');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
