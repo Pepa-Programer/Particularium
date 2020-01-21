@@ -1,0 +1,52 @@
+
+<ion-header>
+ 
+  <ion-toolbar class="encabezado"> 
+    <ion-grid>
+     
+      <ion-row>
+        <ion-button class="iconoAtras" routerLink='/home'>  <ion-icon  ios="ios-arrow-back" md="md-arrow-back"></ion-icon></ion-button> 
+        <ion-col size="10">
+         
+          <img class="imagenLogin"  src="assets/imgs/perfil.png" > 
+          <ion-title class="encabezado">   PROFILE </ion-title>
+        </ion-col>
+       
+      </ion-row>
+      
+    </ion-grid>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+  <ion-item class="camposFormulario">
+    <ion-label position="floting">Firstname: </ion-label>
+    <ion-input type="text" [(ngModel)]="firstname"> </ion-input>
+  </ion-item>
+  <ion-item class="camposFormulario">
+    <ion-label position="floting">Lastname: </ion-label>
+    <ion-input type="text" [(ngModel)]="lastname"></ion-input>
+  </ion-item>
+  <ion-item class="camposFormulario">
+    <ion-label position="floting">Phone: </ion-label>
+    <ion-input type="text" [(ngModel)]="phone"> </ion-input>
+  </ion-item>
+  <ion-item class="camposFormulario">
+    <ion-label position="floting">Photo: </ion-label>
+    <ion-input type="text" [(ngModel)]="photo"> </ion-input>
+  </ion-item>
+  <ion-item class="camposFormulario">
+    <ion-label position="floting">Adress: </ion-label>
+    <ion-input type="text" [(ngModel)]="adress"> </ion-input>
+  </ion-item>
+  
+  </ion-list>
+ 
+  <ion-button color="#3b5999" class="buttonLogin" (click)="Save()">Save</ion-button>
+  <ion-button color="#3b5999" class="buttonLogin" (click)="Cancel()">Cancel</ion-button>
+</ion-content>
+
+
