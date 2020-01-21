@@ -17,12 +17,8 @@ export class SignUpPage implements OnInit {
   ngOnInit() {
   }
 
-  
-
-
   registrar(){
-    console.log("html: "+this.userReg.email)
-    console.log("servicio: "+this.servSingUp.$userReg.email)
+    
     this.servSingUp.register()
   }
 

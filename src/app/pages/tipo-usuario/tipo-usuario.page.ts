@@ -1,4 +1,7 @@
+import { SingUpServiceService } from './../../servers/singUp/sing-up-service.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/model/user';
+import { SingUpServiceService } from 'src/app/servers/singUp/sing-up-service.service';
 
 @Component({
   selector: 'app-tipo-usuario',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TipoUsuarioPage implements OnInit {
 
-  constructor() { }
+  constructor(private sigServ: SingUpServiceService) { }
 
   ngOnInit() {
+  }
+
+  addStudent(){
+    this.sigServ.addStudentId();
+  }
+  addTeacher(){
+    this.sigServ.addTeacherId();
   }
 
 }
