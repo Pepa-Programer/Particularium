@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'logged-in',
     loadChildren: () => import('./pages/logged-in/logged-in.module').then( m => m.LoggedInPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
   
   ];
   
