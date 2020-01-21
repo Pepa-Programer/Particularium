@@ -24,7 +24,7 @@ export class DataService {
 				console.log('Document successfully updated!');
 			});
 	}
-	
+
 	updateStudentProfile(idUser: string, student: Student) {
 		return this.afStoreSv
 			.collection('user')
@@ -62,7 +62,7 @@ export class DataService {
 	}
 
 	getProfile(idUser: string) {
-		let user = this.afStoreSv.collection('user').doc(idUser).get();
+		const user = this.afStoreSv.collection('user').doc(idUser).get();
 		return user
 			.toPromise()
 			.then((doc) => {
