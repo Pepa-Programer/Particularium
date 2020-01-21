@@ -1,18 +1,68 @@
-import { User } from './../interfaces/User';
+import { Student } from './../core/model/student';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Teacher } from '../core/model/teacher';
+import { Student } from '../core/model/student';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DataService {
 	constructor(private afStoreSv: AngularFirestore) {}
-	addProfile(idUser: string, user: User) {
-		return this.afStoreSv.collection('user').doc(idUser).set(user);
+	addUserProfile(idUser: string, user: Teacher | Student) {
+		return this.afStoreSv.collection('user').doc(idUser).set(Object.assign({}, user));
 	}
-	getUser(idUser: string) {
-		let user = this.afStoreSv.collection('user').doc(idUser).get();
+
+	updateTeacherProfile(idUser: string, teacher: Teacher) {
+		return this.afStoreSv
+			.collection('user')
+			.doc(idUser)
+			.update({
+				email: teacher.$email
+			})
+			.then(function() {
+				console.log('Document successfully updated!');
+			});
+	}
+
+	updateStudentProfile(idUser: string, student: Student) {
+		return this.afStoreSv
+			.collection('user')
+			.doc(idUser)
+			.update({
+				email: student.$email
+			})
+			.then(function() {
+				console.log('Document successfully updated!');
+			});
+	}
+
+	addTeacherId(idUser: string) {
+		return this.afStoreSv.collection('teachers').doc(idUser).set(idUser);
+	}
+
+	addStudentId(idUser: string) {
+		return this.afStoreSv.collection('students').doc(idUser).set(idUser);
+	}
+
+	isTeacher(idUser: string) {
+		return this.afStoreSv
+			.collection('teachers', (ref) => ref.where('idUser', '==', idUser))
+			.get()
+			.toPromise()
+			.then(function(querySnapshot) {
+				querySnapshot.forEach(function(doc) {
+					// doc.data() is never undefined for query doc snapshots
+					return true;
+				});
+			})
+			.catch(function(error) {
+				return false;
+			});
+	}
+
+	getProfile(idUser: string) {
+		const user = this.afStoreSv.collection('user').doc(idUser).get();
 		return user
 			.toPromise()
 			.then((doc) => {
