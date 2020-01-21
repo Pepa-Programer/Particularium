@@ -15,14 +15,12 @@ export class SingUpServiceService {
 	
 	constructor(private afAuth: AuthService, private afStore: DataService,public alert: AlertController, private routesv: Router) {
 
-	}
 
 	async register() {
 		this.afAuth.setUser(this.userReg);
 		return await this.afAuth.register().then(() => {
 			this.showAlert("Welcome", "Sign Up successfully!!")
 			this.routesv.navigateByUrl('/tipo-usuario');//Siguiente registro
-			
 		}).catch((err) => {
 			console.log(err);//Alerta
 		});
@@ -30,22 +28,37 @@ export class SingUpServiceService {
 	
 	async addStudent(student: Student) {
 		this.afAuth.setUser(this.userReg);
-		return await this.afStore.addUserProfile(this.afAuth.getAuth().currentUser.uid, student).then(() => {
-			this.routesv.navigateByUrl('/profile');//Siguiente registro
+		return await this.afStore.addUserProfile(this.afAuth.getCurrentUserUid(), student).then(() => {
+			this.routesv.navigateByUrl('/logged-in');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
 		});
 	}
 	async addTeacher(teacher: Teacher) {
 		this.afAuth.setUser(this.userReg);
-		return await this.afStore.addUserProfile(this.afAuth.getAuth().currentUser.uid, teacher).then(() => {
-			this.routesv.navigateByUrl('/profile');//Siguiente registro
+		return await this.afStore.addUserProfile(this.afAuth.getCurrentUserUid(), teacher).then(() => {
+			this.routesv.navigateByUrl('/logged-in');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
 		});
 	}
 
-
+	async addStudentId() {
+		this.afAuth.setUser(this.userReg);
+		return await this.afStore.addStudentId(this.afAuth.getCurrentUserUid()).then(() => {
+			this.routesv.navigateByUrl('');//Siguiente registro
+		}).catch((err) => {
+			console.log(err);//Alerta
+		});
+	}
+	async addTeacherId() {
+		this.afAuth.setUser(this.userReg);
+		return await this.afStore.addTeacherId(this.afAuth.getCurrentUserUid()).then(() => {
+			this.routesv.navigateByUrl('');//Siguiente registro
+		}).catch((err) => {
+			console.log(err);//Alerta
+		});
+	}
 
     /**
      * Getter $userReg
