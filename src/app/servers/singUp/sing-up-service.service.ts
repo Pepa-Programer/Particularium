@@ -38,7 +38,22 @@ export class SingUpServiceService {
 		});
 	}
 
-
+	async addStudentId() {
+		this.afAuth.setUser(this.userReg);
+		return await this.afStore.addStudentId(this.afAuth.getCurrentUserUid()).then(() => {
+			this.routesv.navigateByUrl('');//Siguiente registro
+		}).catch((err) => {
+			console.log(err);//Alerta
+		});
+	}
+	async addTeacherId() {
+		this.afAuth.setUser(this.userReg);
+		return await this.afStore.addTeacherId(this.afAuth.getCurrentUserUid()).then(() => {
+			this.routesv.navigateByUrl('');//Siguiente registro
+		}).catch((err) => {
+			console.log(err);//Alerta
+		});
+	}
 
     /**
      * Getter $userReg

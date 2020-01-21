@@ -1,3 +1,4 @@
+import { SingUpServiceService } from './../../servers/singUp/sing-up-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TipoUsuarioPage implements OnInit {
 
-  constructor() { }
+  constructor(private sigServ: SingUpServiceService) { }
 
   ngOnInit() {
+  }
+
+  addStudent(){
+    this.sigServ.addStudentId();
+  }
+  addTeacher(){
+    this.sigServ.addTeacherId();
   }
 
 }
