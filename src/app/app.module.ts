@@ -12,6 +12,7 @@ import firebaseConfig from './firebase';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
 	declarations: [ AppComponent ],
 	entryComponents: [],

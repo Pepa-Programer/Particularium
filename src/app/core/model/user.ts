@@ -5,13 +5,7 @@ export class User {
     private _location: Coordinates;
     private _email: string;
 
-
-    constructor(name: string, lastname: string, password: string, location: Coordinates, email: string) {
-        this._name = name;
-        this._lastname = lastname;
-        this._password = password;
-        this._location = location;
-        this._email = email;
+    constructor() {  
     }
 
 
