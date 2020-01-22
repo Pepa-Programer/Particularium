@@ -1,8 +1,8 @@
-import { Teacher } from './../../core/model/teacher';
+import { Teacher } from '../../core/model/teacher';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Student } from './../../core/model/student';
+import { Student } from '../../core/model/student';
 
 @Injectable({
 	providedIn: 'root'
@@ -57,11 +57,12 @@ export class DataService {
 			.toPromise()
 			.then(function (querySnapshot) {
 				querySnapshot.forEach(function (doc) {
-					// doc.data() is never undefined for query doc snapshots
+					console.log("hola");
 					return true;
 				});
 			})
 			.catch(function (error) {
+				console.log("hola");
 				return false;
 			});
 			
