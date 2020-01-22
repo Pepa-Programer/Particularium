@@ -1,11 +1,12 @@
 import { User } from "./user";
+import { Geoposition } from '@ionic-native/geolocation';
 
 export class Student extends User {
     private demands: Array<Demand>;
 
 
-    constructor($demands: Array<Demand>, $id: string, $name: string, $user: string, $password: string, $location: string, $email: string) {
-        super();
+    constructor($demands: Array<Demand>,$name: string, $lastname: string, $password: string, $location: Coordinates, $email: string) {
+        super($name,$lastname,$password,$location,$email);
         
         this.demands = $demands;
     }

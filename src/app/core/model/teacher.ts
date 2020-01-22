@@ -1,17 +1,16 @@
-import { User } from "./user";
+import { User } from './user';
+import { Geoposition } from '@ionic-native/geolocation';
 
 export class Teacher extends User {
     private phone: string;
     private offers: Array<Offer>;
 
 
-    constructor($title :string, $phone: string, $offers: Array<Offer>, $id: string, $name: string, $user: string, $password: string, $location: string, $email: string) {
-        super();
+    constructor($phone: string, $offers: Array<Offer>, $name: string, $lastname: string, $password: string, $location: Coordinates, $email: string) {
+        super($name, $lastname, $password, $location, $email);
         this.phone = $phone;
         this.offers = $offers;
     }
-
-
     /**
      * Getter $phone
      * @return {string}

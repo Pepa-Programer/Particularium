@@ -26,7 +26,7 @@ export class LoginServiceService {
     return await this.afAuth.login().then(() => {
       console.log("Profesor: "+this.afStore.isTeacher(this.afAuth.getCurrentUserUid()))
       console.log("Alumno: "+this.afStore.isStudent(this.afAuth.getCurrentUserUid()))
-      if(null!=this.afStore.isTeacher(this.afAuth.getCurrentUserUid()) && null!=this.afStore.isStudent(this.afAuth.getCurrentUserUid())){
+      if(!this.afStore.isTeacher(this.afAuth.getCurrentUserUid()) && !this.afStore.isStudent(this.afAuth.getCurrentUserUid())){
         this.routesv.navigateByUrl('/tipo-usuario');
       }else{
         this.routesv.navigateByUrl('/logged-in');

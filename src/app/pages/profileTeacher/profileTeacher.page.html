@@ -24,7 +24,7 @@
 <ion-list>
   <ion-item class="camposFormulario">
     <ion-label position="floting">Firstname: </ion-label>
-    <ion-input type="text" [(ngModel)]="firstname"> </ion-input>
+    <ion-input type="text" [(ngModel)]="name"> </ion-input>
   </ion-item>
   <ion-item class="camposFormulario">
     <ion-label position="floting">Lastname: </ion-label>
@@ -34,19 +34,12 @@
     <ion-label position="floting">Phone: </ion-label>
     <ion-input type="text" [(ngModel)]="phone"> </ion-input>
   </ion-item>
-  <ion-item class="camposFormulario">
-    <ion-label position="floting">Photo: </ion-label>
-    <ion-input type="text" [(ngModel)]="photo"> </ion-input>
-  </ion-item>
-  <ion-item class="camposFormulario">
-    <ion-label position="floting">Adress: </ion-label>
-    <ion-input type="text" [(ngModel)]="adress"> </ion-input>
-  </ion-item>
+
   
   </ion-list>
  
-  <ion-button color="#3b5999" class="buttonLogin" (click)="Save()">Save</ion-button>
-  <ion-button color="#3b5999" class="buttonLogin" (click)="Cancel()">Cancel</ion-button>
+  <ion-button color="#3b5999" class="buttonLogin" (click)="save()">Save</ion-button>
+  <ion-button color="#3b5999" class="buttonLogin" (click)="cancel()">Cancel</ion-button>
 </ion-content>
 
 
