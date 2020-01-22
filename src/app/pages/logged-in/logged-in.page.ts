@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from 'src/app/servicios/login/login-service.service';
 
-
 @Component({
   selector: 'app-logged-in',
   templateUrl: './logged-in.page.html',

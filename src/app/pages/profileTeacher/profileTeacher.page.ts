@@ -9,7 +9,8 @@ import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.s
 })
 export class ProfileTeacherPage implements OnInit {
 
-  private teacher : Teacher = null;
+  private teacher : Teacher = new Teacher();
+
 
   constructor(private signUp: SingUpServiceService) {
   }

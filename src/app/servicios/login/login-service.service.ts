@@ -27,9 +27,10 @@ export class LoginServiceService {
       console.log("Profesor: "+this.afStore.isTeacher(this.afAuth.getCurrentUserUid()))
       console.log("Alumno: "+this.afStore.isStudent(this.afAuth.getCurrentUserUid()))
       if(!this.afStore.isTeacher(this.afAuth.getCurrentUserUid()) && !this.afStore.isStudent(this.afAuth.getCurrentUserUid())){
-        this.routesv.navigateByUrl('/tipo-usuario');
-      }else{
-        this.routesv.navigateByUrl('/logged-in');
+        return this.routesv.navigateByUrl('/tipo-usuario');
+      }
+      else{
+        return this.routesv.navigateByUrl('/logged-in');
       }
       
     }).catch((err) => {

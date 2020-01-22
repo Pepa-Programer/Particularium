@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/model/user';
 import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';

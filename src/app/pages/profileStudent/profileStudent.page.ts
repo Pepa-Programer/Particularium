@@ -2,7 +2,6 @@ import { Student } from './../../core/model/student';
 import { Component, OnInit } from '@angular/core';
 import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
 
-
 @Component({
   selector: 'app-profileStudent',
   templateUrl: './profileStudent.page.html',
@@ -10,7 +9,7 @@ import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.s
 })
 export class ProfileStudentPage implements OnInit {
 
-  private student: Student;
+  private student: Student = new Student();
 
   constructor(private signUp: SingUpServiceService) {
   }
