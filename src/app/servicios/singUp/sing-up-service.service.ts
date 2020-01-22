@@ -1,11 +1,12 @@
 import { Teacher } from './../../core/model/teacher';
 import { Student } from './../../core/model/student';
 import { Injectable } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/User';
 import { AlertController } from '@ionic/angular';
-import { DataService } from '../data/data.service';
 import { AuthService } from '../auth/auth.service';
+import { DataService } from '../data/data.service';
 
 @Injectable({
 	providedIn: 'root'
