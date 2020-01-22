@@ -1,6 +1,6 @@
 import { Teacher } from './../../core/model/teacher';
-import { SingUpServiceService } from './../../servers/singUp/sing-up-service.service';
 import { Component, OnInit } from '@angular/core';
+import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
 
 @Component({
   selector: 'app-profileTeacher',
