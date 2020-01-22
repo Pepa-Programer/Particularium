@@ -1,97 +1,102 @@
 export class User {
-    private name: string;
-    private user: string;
-    private password: string;
-    private location: string;
-    private email: string;
+    private _name: string;
+    private _lastname: string;
+    private _password: string;
+    private _location: Coordinates;
+    private _email: string;
 
 
-    constructor() {
+    constructor(name: string, lastname: string, password: string, location: Coordinates, email: string) {
+        this._name = name;
+        this._lastname = lastname;
+        this._password = password;
+        this._location = location;
+        this._email = email;
     }
 
-    
 
     /**
-     * Getter $name
+     * Getter name
      * @return {string}
      */
-    public get $name(): string {
-        return this.name;
+    public get name(): string {
+        return this._name;
     }
 
     /**
-     * Getter $user
+     * Getter lastname
      * @return {string}
      */
-    public get $user(): string {
-        return this.user;
+    public get lastname(): string {
+        return this._lastname;
     }
 
     /**
-     * Getter $password
+     * Getter password
      * @return {string}
      */
-    public get $password(): string {
-        return this.password;
+    public get password(): string {
+        return this._password;
     }
 
+
     /**
-     * Getter $location
+     * Getter email
      * @return {string}
      */
-    public get $location(): string {
-        return this.location;
+    public get email(): string {
+        return this._email;
     }
 
     /**
-     * Getter $email
-     * @return {string}
-     */
-    public get $email(): string {
-        return this.email;
-    }
-
-    
-    /**
-     * Setter $name
+     * Setter name
      * @param {string} value
      */
-    public set $name(value: string) {
-        this.name = value;
+    public set name(value: string) {
+        this._name = value;
     }
 
     /**
-     * Setter $user
+     * Setter lastname
      * @param {string} value
      */
-    public set $user(value: string) {
-        this.user = value;
+    public set lastname(value: string) {
+        this._lastname = value;
     }
 
     /**
-     * Setter $password
+     * Setter password
      * @param {string} value
      */
-    public set $password(value: string) {
-        this.password = value;
+    public set password(value: string) {
+        this._password = value;
     }
+
 
     /**
-     * Setter $location
+     * Setter email
      * @param {string} value
      */
-    public set $location(value: string) {
-        this.location = value;
+    public set email(value: string) {
+        this._email = value;
     }
+
 
     /**
-     * Setter $email
-     * @param {string} value
+     * Getter location
+     * @return {Coordinates}
      */
-    public set $email(value: string) {
-        this.email = value;
-    }
+	public get location(): Coordinates {
+		return this._location;
+	}
 
+    /**
+     * Setter location
+     * @param {Coordinates} value
+     */
+	public set location(value: Coordinates) {
+		this._location = value;
+	}
 
 
 }

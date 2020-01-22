@@ -16,8 +16,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   login() {
-    console.log("html: "+this.userReg.email)
-    console.log("servicio: "+this.logServ.$userReg.email)
     this.logServ.login()
   }
 }

@@ -14,7 +14,7 @@ export class SingUpServiceService {
 	private userReg: User = {};
 	
 	constructor(private afAuth: AuthService, private afStore: DataService,public alert: AlertController, private routesv: Router) {
-
+	}
 
 	async register() {
 		this.afAuth.setUser(this.userReg);
@@ -45,16 +45,16 @@ export class SingUpServiceService {
 
 	async addStudentId() {
 		this.afAuth.setUser(this.userReg);
+		console.log(this.userReg);
 		return await this.afStore.addStudentId(this.afAuth.getCurrentUserUid()).then(() => {
-			this.routesv.navigateByUrl('');//Siguiente registro
+			this.routesv.navigateByUrl('/profileStudent');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
 		});
 	}
 	async addTeacherId() {
-		this.afAuth.setUser(this.userReg);
 		return await this.afStore.addTeacherId(this.afAuth.getCurrentUserUid()).then(() => {
-			this.routesv.navigateByUrl('');//Siguiente registro
+			this.routesv.navigateByUrl('/profileTeacher');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
 		});

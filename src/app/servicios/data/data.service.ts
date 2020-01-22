@@ -8,7 +8,9 @@ import { Student } from './../../core/model/student';
 	providedIn: 'root'
 })
 export class DataService {
-	constructor(private afStoreSv: AngularFirestore) { }
+	constructor(private afStoreSv: AngularFirestore) { 
+
+	}
 
 	addUserProfile(idUser: string, user: Teacher | Student) {
 		return this.afStoreSv.collection('user').doc(idUser).set(Object.assign({}, user));
@@ -19,7 +21,7 @@ export class DataService {
 			.collection('user')
 			.doc(idUser)
 			.update({
-				email: teacher.$email
+				email: teacher.email
 			})
 			.then(function () {
 				console.log('Document successfully updated!');
@@ -31,7 +33,7 @@ export class DataService {
 			.collection('user')
 			.doc(idUser)
 			.update({
-				email: student.$email
+				email: student.email
 			})
 			.then(function () {
 				console.log('Document successfully updated!');
@@ -39,11 +41,13 @@ export class DataService {
 	}
 
 	addTeacherId(idUser: string) {
-		return this.afStoreSv.collection('teachers').doc(idUser).set(idUser);
+		console.log(idUser);
+		return this.afStoreSv.collection('teachers').doc(idUser).set({idUser: idUser});
 	}
 
 	addStudentId(idUser: string) {
-		return this.afStoreSv.collection('students').doc(idUser).set(idUser);
+		console.log(idUser);
+		return this.afStoreSv.collection('students').doc(idUser).set({idUser: idUser});
 	}
 
 	isTeacher(idUser: string) {

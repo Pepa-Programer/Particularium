@@ -1,3 +1,4 @@
+import { ProfileTeacherPageModule } from './pages/profileTeacher/profileTeacher.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -21,9 +22,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/logged-in/logged-in.module').then( m => m.LoggedInPageModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    path: 'profileStudent',
+    loadChildren: () => import('./pages/profileStudent/profileStudent.module').then( m => m.ProfileStudentPageModule)
   },
+  {
+    path: 'profileTeacher',
+    loadChildren: () => import('./pages/profileTeacher/profileTeacher.module').then( m => m.ProfileTeacherPageModule)
+  },
+  
   
   ];
   
