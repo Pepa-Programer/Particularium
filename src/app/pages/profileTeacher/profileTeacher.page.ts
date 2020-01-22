@@ -1,6 +1,6 @@
 import { Teacher } from './../../core/model/teacher';
-import { SingUpServiceService } from './../../servers/singUp/sing-up-service.service';
 import { Component, OnInit } from '@angular/core';
+import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
 
 @Component({
   selector: 'app-profileTeacher',
@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileTeacherPage implements OnInit {
 
-  private teacher : Teacher = null;
+  private teacher : Teacher = new Teacher();
+
 
   constructor(private signUp: SingUpServiceService) {
   }
