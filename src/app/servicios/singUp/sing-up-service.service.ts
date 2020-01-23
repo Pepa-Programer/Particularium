@@ -38,6 +38,7 @@ export class SingUpServiceService {
 		student.email=this.userReg.email;
 		student.password=this.userReg.password;
 		this.afAuth.setUser(this.userReg);
+		console.log(student)
 		return await this.afStore
 			.addUserProfile(this.afAuth.getCurrentUserUid(), student)
 			.then(() => {
@@ -51,6 +52,7 @@ export class SingUpServiceService {
 	async addTeacher(teacher: Teacher) {
 		teacher.email=this.userReg.email;
 		teacher.password=this.userReg.password;
+		console.log(teacher)
 		this.afAuth.setUser(this.userReg);
 		return await this.afStore
 			.addUserProfile(this.afAuth.getCurrentUserUid(), teacher)
