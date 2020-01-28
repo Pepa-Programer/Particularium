@@ -1,17 +1,12 @@
-import { User } from "./user";
+import { User } from './user';
 
 export class Teacher extends User {
     private phone: string;
     private offers: Array<Offer>;
-
-
-    constructor($title :string, $phone: string, $offers: Array<Offer>, $id: string, $name: string, $user: string, $password: string, $location: string, $email: string) {
+    
+    constructor() {
         super();
-        this.phone = $phone;
-        this.offers = $offers;
     }
-
-
     /**
      * Getter $phone
      * @return {string}

@@ -1,14 +1,16 @@
-import { Teacher } from './../../core/model/teacher';
+import { Teacher } from '../../core/model/teacher';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Student } from './../../core/model/student';
+import { Student } from '../../core/model/student';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DataService {
-	constructor(private afStoreSv: AngularFirestore) { }
+	constructor(private afStoreSv: AngularFirestore) { 
+
+	}
 
 	addUserProfile(idUser: string, user: Teacher | Student) {
 		return this.afStoreSv.collection('user').doc(idUser).set(Object.assign({}, user));
@@ -19,7 +21,7 @@ export class DataService {
 			.collection('user')
 			.doc(idUser)
 			.update({
-				email: teacher.$email
+				email: teacher.email
 			})
 			.then(function () {
 				console.log('Document successfully updated!');
@@ -31,7 +33,7 @@ export class DataService {
 			.collection('user')
 			.doc(idUser)
 			.update({
-				email: student.$email
+				email: student.email
 			})
 			.then(function () {
 				console.log('Document successfully updated!');
@@ -39,16 +41,36 @@ export class DataService {
 	}
 
 	addTeacherId(idUser: string) {
-		return this.afStoreSv.collection('teachers').doc(idUser).set(idUser);
+		console.log(idUser);
+		return this.afStoreSv.collection('teachers').doc(idUser).set({idUser: idUser});
 	}
 
 	addStudentId(idUser: string) {
-		return this.afStoreSv.collection('students').doc(idUser).set(idUser);
+		console.log(idUser);
+		return this.afStoreSv.collection('students').doc(idUser).set({idUser: idUser});
 	}
 
 	isTeacher(idUser: string) {
 		return this.afStoreSv
-			.collection('teachers', (ref) => ref.where('idUser', '==', idUser))
+			.collection('teachers', (ref) => ref.where(idUser, '==', idUser))
+			.get()
+			.toPromise()
+			.then(function (querySnapshot) {
+				querySnapshot.forEach(function (doc) {
+					
+					console.log("hola");
+					return true;
+				});
+			})
+			.catch(function (error) {
+				console.log("hola");
+				return false;
+			});
+			
+	}
+	isStudent(idUser: string) {
+		return this.afStoreSv
+			.collection('students', (ref) => ref.where(idUser, '==', idUser))
 			.get()
 			.toPromise()
 			.then(function (querySnapshot) {

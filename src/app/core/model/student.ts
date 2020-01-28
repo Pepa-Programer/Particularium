@@ -4,12 +4,9 @@ export class Student extends User {
     private demands: Array<Demand>;
 
 
-    constructor($demands: Array<Demand>, $id: string, $name: string, $user: string, $password: string, $location: string, $email: string) {
+    constructor() {
         super();
-        
-        this.demands = $demands;
     }
-
 
     /**
      * Getter $demands

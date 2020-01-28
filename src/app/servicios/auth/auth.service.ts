@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/app/servers/auth/auth.service.ts
 import { User } from '../../interfaces/UserInt';
+=======
+import { UserInt } from '../../interfaces/UserInt';
+>>>>>>> 21ee226ecf1a3f71d6fecabaa58daebf1b91a342:src/app/servicios/auth/auth.service.ts
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 @Injectable({
@@ -6,7 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 	
-	private user: User = {};
+	private user: UserInt = {};
 
 	constructor(private afAuth: AngularFireAuth) {}
 
@@ -37,7 +41,9 @@ export class AuthService {
 	getAuth() {
 		return this.afAuth.auth;
 	}
-
+	getCurrentUserUid(){
+		return this.afAuth.auth.currentUser.uid;
+	}
 	deleteUser() {
 		if (this.afAuth.auth.currentUser.providerId == null) {
 			console.log('This user doesnt exits already');

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export class User {
     private name: string;
     private user: string;
@@ -7,91 +8,101 @@ export class User {
     private removed: boolean;
 
 
+=======
+>>>>>>> 21ee226ecf1a3f71d6fecabaa58daebf1b91a342
 
-    constructor() {
-    }
 
-    
+export class User {
+    private _name: string;
+    private _lastname: string;
+    private _password: string;
 
     /**
-     * Getter $name
+     * Getter location
+     * @return {any}
+     */
+	public get location(): any {
+		return this._location;
+	}
+
+    /**
+     * Setter location
+     * @param {any} value
+     */
+	public set location(value: any) {
+		this._location = value;
+	}
+    private _location: any;
+    private _email: string;
+
+    constructor() {  
+    }
+
+
+    /**
+     * Getter name
      * @return {string}
      */
-    public get $name(): string {
-        return this.name;
+    public get name(): string {
+        return this._name;
     }
 
     /**
-     * Getter $user
+     * Getter lastname
      * @return {string}
      */
-    public get $user(): string {
-        return this.user;
+    public get lastname(): string {
+        return this._lastname;
     }
 
     /**
-     * Getter $password
+     * Getter password
      * @return {string}
      */
-    public get $password(): string {
-        return this.password;
+    public get password(): string {
+        return this._password;
     }
 
+
     /**
-     * Getter $location
+     * Getter email
      * @return {string}
      */
-    public get $location(): string {
-        return this.location;
+    public get email(): string {
+        return this._email;
     }
 
     /**
-     * Getter $email
-     * @return {string}
-     */
-    public get $email(): string {
-        return this.email;
-    }
-
-    
-    /**
-     * Setter $name
+     * Setter name
      * @param {string} value
      */
-    public set $name(value: string) {
-        this.name = value;
+    public set name(value: string) {
+        this._name = value;
     }
 
     /**
-     * Setter $user
+     * Setter lastname
      * @param {string} value
      */
-    public set $user(value: string) {
-        this.user = value;
+    public set lastname(value: string) {
+        this._lastname = value;
     }
 
     /**
-     * Setter $password
+     * Setter password
      * @param {string} value
      */
-    public set $password(value: string) {
-        this.password = value;
+    public set password(value: string) {
+        this._password = value;
     }
 
-    /**
-     * Setter $location
-     * @param {string} value
-     */
-    public set $location(value: string) {
-        this.location = value;
-    }
 
     /**
-     * Setter $email
+     * Setter email
      * @param {string} value
      */
-    public set $email(value: string) {
-        this.email = value;
+    public set email(value: string) {
+        this._email = value;
     }
 
 
@@ -102,5 +113,10 @@ export class User {
     public set $removed(value : boolean) {
         this.removed = value;
     }
+
+
+
+
+
 
 }

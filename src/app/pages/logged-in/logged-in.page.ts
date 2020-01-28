@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginServiceService } from 'src/app/servicios/login/login-service.service';
 
 @Component({
   selector: 'app-logged-in',
@@ -7,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoggedInPage implements OnInit {
 
-  constructor() { }
+  constructor(private logServ: LoginServiceService) { }
 
   ngOnInit() {
   }
   signOff(){
-    //Llamada al provider cerrar sesion
+    this.logServ.logout();
   }
 }
