@@ -5,7 +5,7 @@ export class User {
     private location: string;
     private email: string;
     private removed: boolean;
-    //
+
 
 
     constructor() {
