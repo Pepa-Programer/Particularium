@@ -1,8 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+import { User } from 'src/app/interfaces/UserInt';
+=======
 import { UserInt } from 'src/app/interfaces/UserInt';
 import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
 
+>>>>>>> 21ee226ecf1a3f71d6fecabaa58daebf1b91a342
 
 @Component({
   selector: 'app-sign-up',
