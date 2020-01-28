@@ -52,11 +52,12 @@ export class DataService {
 
 	isTeacher(idUser: string) {
 		return this.afStoreSv
-			.collection('teachers', (ref) => ref.where('idUser', '==', idUser))
+			.collection('teachers', (ref) => ref.where(idUser, '==', idUser))
 			.get()
 			.toPromise()
 			.then(function (querySnapshot) {
 				querySnapshot.forEach(function (doc) {
+					
 					console.log("hola");
 					return true;
 				});
@@ -69,7 +70,7 @@ export class DataService {
 	}
 	isStudent(idUser: string) {
 		return this.afStoreSv
-			.collection('students', (ref) => ref.where('idUser', '==', idUser))
+			.collection('students', (ref) => ref.where(idUser, '==', idUser))
 			.get()
 			.toPromise()
 			.then(function (querySnapshot) {
@@ -81,7 +82,6 @@ export class DataService {
 			.catch(function (error) {
 				return false;
 			});
-			
 	}
 
 	getProfile(idUser: string) {

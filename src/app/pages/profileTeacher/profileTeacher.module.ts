@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 
 import { ProfileTeacherPage } from './profileTeacher.page';
 import { ProfileTeacherPageRoutingModule } from './profileTeacher-routing.module';
@@ -13,7 +11,7 @@ import { ProfileTeacherPageRoutingModule } from './profileTeacher-routing.module
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfileTeacherPageRoutingModule
+    ProfileTeacherPageRoutingModule,
   ],
   declarations: [ProfileTeacherPage]
 })

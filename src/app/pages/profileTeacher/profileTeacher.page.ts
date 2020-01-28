@@ -1,13 +1,12 @@
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import {AngularFirestore} from '@angular/fire/firestore'
-import * as firebase from 'firebase/app'
-import { Teacher } from './../../core/model/teacher';
-import { Component, OnInit } from '@angular/core';
-import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
-import { Map, tileLayer, marker, icon } from 'leaflet';
-import 'esri-leaflet';
-import { geosearch } from 'esri-leaflet-geocoder';//"esri-leaflet-geocoder"
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+
+
+import { Teacher } from './../../core/model/teacher';
+import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
+declare var google;
 @Component({
   selector: 'app-profileTeacher',
   templateUrl: './profileTeacher.page.html',
@@ -15,70 +14,72 @@ import { geosearch } from 'esri-leaflet-geocoder';//"esri-leaflet-geocoder"
 })
 export class ProfileTeacherPage implements OnInit {
 
+  @ViewChild('map', { static: false }) mapElement: ElementRef;
+  map: any;
+  address: string;
+
   private teacher: Teacher = new Teacher();
 
-
-  profesorIcon = icon({
-    iconUrl: '../../../assets/icon/marcadorProfesor.png',
-    iconSize: [52, 52], // size of the icon
-    iconAnchor: [26, 52], // point of the icon which will correspond to marker's location
-    popupAnchor: [-3, -76]
-  });
-  map: Map;
-  marker: any;
-  latLong = [];
-  basura = [];
-  icons: icon[] = new Array();
-  marcadores = [[38.6762376, -6.4183559], [38.6730116, -6.4183819], [38.6740926, -6.4183829], [38.6750836, -6.4183839]];
-
-
-  constructor(private signUp: SingUpServiceService) {
+  constructor(private signUp: SingUpServiceService, private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoder) {
   }
 
   ngOnInit() {
+    this.loadMap();
   }
 
   save() {
     this.signUp.addTeacher(this.teacher);
   }
-  //Mapa
 
-  ionViewDidEnter() {
-    this.map = new Map("myMap");
-    let searchControl = geosearch().addTo(this.map);
-    this.showMap();
-  }
-  showMap() {
-
-    this.basura.push(this.map);
-    this.map.setView([38.6760376, -6.4183859], 15);
-    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(this.map);
-    this.pintarIcono()
-  }
-
-  pintarIcono() {
-    this.map.on('click', function (e) {
-      console.log(this.teacher.location);
-      if (this.teacher.location != undefined) {
-        this.map.remove();
-        this.map = new Map("myMap");
-        this.showMap();
+  loadMap() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      this.teacher.location = new firebase.firestore.GeoPoint(e.latlng.lat, e.latlng.lng);
-      alert(e.latlng);
-      marker(e.latlng, { icon: this.profesorIcon }, 15).addTo(this.map)
-        .bindPopup('Hey, I\'m Here');
-    }, this);
+
+      this.getAddressFromCoords(resp.coords.latitude, resp.coords.longitude);
+
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+      this.map.addListener('tilesloaded', () => {
+        console.log('accuracy', this.map);
+        this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
+      });
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
-  showMarker(latLong) {
-    console.log(marker([0, 0]).getIcon());
-    marker(latLong, { icon: this.profesorIcon }, 15).addTo(this.map);
-    this.map.setView(latLong);
-  }
-  getMarker(e) {
-    console.log(e.latLng);
+  getAddressFromCoords(lattitude, longitude) {
+    console.log("getAddressFromCoords " + lattitude + " " + longitude);
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+    };
+
+    this.nativeGeocoder.reverseGeocode(lattitude, longitude, options)
+      .then((result: NativeGeocoderResult[]) => {
+        this.address = "";
+        let responseAddress = [];
+        for (let [key, value] of Object.entries(result[0])) {
+          if (value.length > 0)
+            responseAddress.push(value);
+
+        }
+        responseAddress.reverse();
+        for (let value of responseAddress) {
+          this.address += value + ", ";
+        }
+        this.address = this.address.slice(0, -2);
+      })
+      .catch((error: any) => {
+        this.address = "Address Not Available!";
+      });
+
   }
 }
