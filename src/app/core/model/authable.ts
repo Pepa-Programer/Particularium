@@ -7,6 +7,6 @@ export interface Authable{
     login(email : string, password : string) : boolean;
 
     logout();
-//
+
     
 }

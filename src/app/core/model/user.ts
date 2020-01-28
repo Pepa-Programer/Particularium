@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-export class User {
-    private name: string;
-    private user: string;
-    private password: string;
-    private location: string;
-    private email: string;
-    private removed: boolean;
-
-
-=======
->>>>>>> 21ee226ecf1a3f71d6fecabaa58daebf1b91a342
-
 
 export class User {
     private _name: string;
@@ -106,13 +93,7 @@ export class User {
     }
 
 
-    public get $removed(): boolean {
-        return this.removed;
-    }
-
-    public set $removed(value : boolean) {
-        this.removed = value;
-    }
+   
 
 
 
