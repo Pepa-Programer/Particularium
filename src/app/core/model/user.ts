@@ -1,8 +1,26 @@
+
+
 export class User {
     private _name: string;
     private _lastname: string;
     private _password: string;
-    private _location: Coordinates;
+
+    /**
+     * Getter location
+     * @return {any}
+     */
+	public get location(): any {
+		return this._location;
+	}
+
+    /**
+     * Setter location
+     * @param {any} value
+     */
+	public set location(value: any) {
+		this._location = value;
+	}
+    private _location: any;
     private _email: string;
 
     constructor() {  
@@ -76,21 +94,10 @@ export class User {
     }
 
 
-    /**
-     * Getter location
-     * @return {Coordinates}
-     */
-	public get location(): Coordinates {
-		return this._location;
-	}
 
-    /**
-     * Setter location
-     * @param {Coordinates} value
-     */
-	public set location(value: Coordinates) {
-		this._location = value;
-	}
+
+
+
 
 
 }
