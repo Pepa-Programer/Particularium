@@ -4,6 +4,7 @@ export class User {
     private password: string;
     private location: string;
     private email: string;
+    private removed: boolean;
 
 
     constructor() {
@@ -93,5 +94,12 @@ export class User {
     }
 
 
+    public get $removed(): boolean {
+        return this.removed;
+    }
+
+    public set $removed(value : boolean) {
+        this.removed = value;
+    }
 
 }

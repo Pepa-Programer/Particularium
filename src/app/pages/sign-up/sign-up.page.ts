@@ -1,6 +1,6 @@
 import { SingUpServiceService } from './../../servers/singUp/sing-up-service.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/User';
+import { User } from 'src/app/interfaces/UserInt';
 
 @Component({
   selector: 'app-sign-up',

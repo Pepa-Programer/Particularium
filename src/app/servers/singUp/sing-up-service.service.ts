@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/servers/auth/auth.service';
 import { DataService } from 'src/app/servers/data/data.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/interfaces/User';
+import { User } from 'src/app/interfaces/UserInt';
 
 @Injectable({
 	providedIn: 'root'
