@@ -1,10 +1,12 @@
-import { Student } from './../../core/model/student';
-import { Component, OnInit } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import {AngularFirestore} from '@angular/fire/firestore'
 import * as firebase from 'firebase/app'
+import { Component, OnInit } from '@angular/core';
 import { SingUpServiceService } from 'src/app/servicios/singUp/sing-up-service.service';
 import { Map, tileLayer, marker, icon } from 'leaflet';
 import 'esri-leaflet';
-import { geosearch } from 'esri-leaflet-geocoder';
+import { geosearch } from 'esri-leaflet-geocoder';//"esri-leaflet-geocoder"
+import { Student } from 'src/app/core/model/student';
 
 @Component({
   selector: 'app-profileStudent',
@@ -60,12 +62,12 @@ export class ProfileStudentPage implements OnInit {
       console.log(this.student.location);
       if (this.student.location != undefined) {
         this.map.remove();
-        this.map = new Map("myMap");
+        this.map = new Map("myMapStudent");
         this.showMap();
       }
       this.student.location = new firebase.firestore.GeoPoint(e.latlng.lat, e.latlng.lng);
       alert(e.latlng);
-      marker(e.latlng, { icon: this.profesorIcon }, 15).addTo(this.map)
+      marker(e.latlng, { icon: this.userIcon }, 15).addTo(this.map)
         .bindPopup('Hey, I\'m Here');
     }, this);
   }

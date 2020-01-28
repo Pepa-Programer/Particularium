@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { DataService } from '../data/data.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/interfaces/User';
+import { UserInt } from 'src/app/interfaces/UserInt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
-  private userReg: User = {};
+  private userReg: UserInt = {};
   constructor(private afAuth: AuthService, private afStore: DataService, private routesv: Router) { }
 
   async logout() {
@@ -42,7 +42,7 @@ export class LoginServiceService {
    * Getter $userReg
    * @return {User }
    */
-  public get $userReg(): User {
+  public get $userReg(): UserInt {
     return this.userReg;
   }
 
@@ -50,7 +50,7 @@ export class LoginServiceService {
    * Setter $userReg
    * @param {User } value
    */
-  public set $userReg(value: User) {
+  public set $userReg(value: UserInt) {
     this.userReg = value;
   }
 

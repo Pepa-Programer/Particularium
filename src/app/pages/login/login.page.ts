@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/User';
+import { UserInt } from 'src/app/interfaces/UserInt';
 import { LoginServiceService } from 'src/app/servicios/login/login-service.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { LoginServiceService } from 'src/app/servicios/login/login-service.servi
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private userReg: User = {};
+  private userReg: UserInt = {};
   constructor(private logServ: LoginServiceService) { 
     this.logServ.$userReg = this.userReg;
   }
