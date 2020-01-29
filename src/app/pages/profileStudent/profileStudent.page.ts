@@ -31,7 +31,8 @@ export class ProfileStudentPage implements OnInit {
   marcadores = [[38.6762376, -6.4183559], [38.6730116, -6.4183819], [38.6740926, -6.4183829], [38.6750836, -6.4183839]];
 
 
-  constructor(private signUp: SingUpServiceService) {
+  constructor(private signUp: SingUpServiceService, , private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoderno) {
   }
 
   ngOnInit() {
